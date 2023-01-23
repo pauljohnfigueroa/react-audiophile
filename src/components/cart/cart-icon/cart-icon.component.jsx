@@ -4,18 +4,13 @@ import { selectCartTotal } from '../../../store/cart/cart.selector';
 import { setIsCartOpen } from '../../../store/cart/cart.action';
 
 
-
 const CartIcon = () => {
 
     const dispatch = useDispatch();
 
-    // Context {value}
-    // const { isCartOpen, setIsCartOpen } = useContext(CartContext);
     const cartTotal = useSelector(selectCartTotal);
-    //const isCartOpen = useSelector(selectIsCartOpen);
 
     // toggle
-    // const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
     const toggleIsCartOpen = () => dispatch(setIsCartOpen(true));
 
     return (

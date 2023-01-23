@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-// import { CartContext } from "../../contexts/cart.context";
 import Button from '../button/button.component'
 import CartItem from './cart-item/cart-item.component'
 
@@ -15,9 +14,7 @@ const CartDropDown = () => {
 
     const dispatch = useDispatch()
 
-    // const { isCartOpen, setIsCartOpen, cartItems, cartTotal } = useContext(CartContext);
     const cartItems = useSelector(selectCartItems)
-    // const isCartOpen = useSelector(selectIsCartOpen)
     const cartTotal = useSelector(selectCartTotal)
 
     useEffect(() => {
@@ -29,7 +26,6 @@ const CartDropDown = () => {
     }, [])
 
     // toggle
-    // const toggleIsCartOpen = () => setIsCartOpen(!isCartOpen);
     const toggleIsCartOpen = () => dispatch(setIsCartOpen(false))
 
     const navigate = useNavigate()

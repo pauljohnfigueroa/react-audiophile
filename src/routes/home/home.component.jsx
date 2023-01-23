@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 
 import Hero from "../../components/hero/hero.component";
 import ProductCategories from "../../components/product-categories/product-categories.component";

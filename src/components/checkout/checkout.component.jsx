@@ -1,37 +1,14 @@
 import { Fragment } from 'react'
 import { useSelector } from 'react-redux'
-//import { CartContext } from '../../contexts/cart.context';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
 import { selectCartItems, selectCartTotalAmount } from '../../store/cart/cart.selector'
-import FormInput from '../form-input/form-input.component'
 import Button from '../button/button.component'
 import CartItem from '../cart/cart-item/cart-item.component'
 
-/* 
-We can split this component into two and keep the code in this file.
-This is not always considered best practice because it seems more obvious to split the
-component into smaller ones. However, sometimes it helps to keep the
-render method cleaner.
-
-    const renderUserMenu = () => {
-    // JSX for user menu
-    }
-    const renderAdminMenu = () => {
-    // JSX for admin menu
-    }
-    return (
-        <div>
-        <h1>Welcome back!</h1>
-        {userExists && renderUserMenu()}
-        {userIsAdmin && renderAdminMenu()}
-        </div>
-    )
-*/
-
 const CheckOut = () => {
-    // const { cartItems, cartTotalAmount } = useContext(CartContext);
+
     const cartItems = useSelector(selectCartItems)
     const cartTotalAmount = useSelector(selectCartTotalAmount)
 

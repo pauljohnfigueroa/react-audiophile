@@ -1,7 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { getRedirectResult } from "firebase/auth";
-
-// import { UserContext } from "../../contexts/user.context";
 
 import {
     auth,
@@ -49,7 +47,8 @@ const SignInForm = () => {
         //console.log(response);
 
         const { user } = await signInWithGooglePopUp();
-        const useDocRef = await createUserDocumentFromAuth(user);
+        // const useDocRef = await createUserDocumentFromAuth(user);
+        await createUserDocumentFromAuth(user);
         resetFormValues();
     }
 
@@ -64,8 +63,8 @@ const SignInForm = () => {
         event.preventDefault();
         try {
             // const response = await signInAuthUserWithEmailAndPassword(email, password);
-            const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-
+            // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            await signInAuthUserWithEmailAndPassword(email, password);
             // setCurrentUser(user); // removed for onAuthStateChanged()
 
             //console.log(response);
