@@ -1,0 +1,77 @@
+/* Categories - Desktop */
+@media screen and (min-width: 1018px) {
+
+    .product-section {
+        width: 84%;
+        margin: auto;
+        padding-bottom: 100px;
+
+        .product-card {
+            display: flex;
+            margin-top: 100px;
+
+            .product-card-header {
+                width: 50%;
+                margin-right: 20px;
+            }
+
+            .product-card-description-container {
+                width: 50%;
+                padding: 0 50px;
+
+                .product-card-description {
+                    text-align: left;
+                    display: unset;
+                    flex-direction: unset;
+                    align-items: unset;
+                    justify-content: unset;
+
+                    .heading {
+                        width: 40%;
+                    }
+
+                    .sub-text {
+                        width: 90%;
+                    }
+                }
+            }
+
+        }
+
+        .product-card-reversed {
+            display: flex;
+            flex-direction: row-reverse;
+            margin-top: 100px;
+
+            .product-card-header {
+                width: 50%;
+                margin-left: 20px;
+            }
+
+            .product-card-description-container {
+                width: 50%;
+                padding: 0 50px;
+
+                .product-card-description {
+                    text-align: left;
+
+                    display: unset;
+                    flex-direction: unset;
+                    align-items: unset;
+                    justify-content: unset;
+
+                    .heading {
+                        width: 100%;
+                        text-align: left;
+                    }
+
+                    .sub-text {
+                        width: 100%;
+                        text-align: left;
+                    }
+                }
+            }
+
+        }
+    }
+}

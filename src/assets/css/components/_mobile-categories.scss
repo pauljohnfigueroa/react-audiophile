@@ -1,0 +1,98 @@
+/* Categories - Mobile */
+// header {
+//     //position: unset;
+// }
+
+.category-heading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #131313;
+    //height: 20px;
+    margin-bottom: 80px;
+    padding: 150px 0 50px 0;
+
+    .heading {
+        color: #FFF;
+        text-transform: uppercase;
+    }
+}
+
+.product-section {
+    width: 100%;
+    margin-top: 40px;
+
+    .product-card,
+    .product-card-reversed {
+        width: 90%;
+        margin: auto;
+
+        .product-card-header {
+            border-radius: 8px;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+            min-height: 350px;
+
+            img {
+                width: 60%;
+            }
+        }
+
+        .product-card-description-container {
+
+            .product-card-description {
+                width: 90%;
+                text-align: center;
+                margin: auto;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .sub-heading {
+                    font-size: 14px;
+                    letter-spacing: 10px;
+                    color: #d87d4a;
+                    text-transform: uppercase;
+                    margin-top: 20px;
+                }
+
+                .heading {
+                    font-size: 21px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    color: #000;
+                    width: 80%;
+                    margin: 20px 0;
+                }
+
+                .sub-text {
+                    color: rgba(0, 0, 0, .5);
+                    font-size: 15px;
+                    line-height: 25px;
+                    margin: 10px 0;
+                }
+
+                .button {
+                    background-color: #D87D4A;
+                    font-size: 13px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    text-transform: uppercase;
+                    color: #fff;
+                    width: 160px;
+                    height: 48px;
+                    padding: 10px 5px;
+                    margin: 15px 0;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

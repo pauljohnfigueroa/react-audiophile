@@ -1,0 +1,33 @@
+@media screen and (min-width: 578px) {
+
+    .checkout-modal {
+
+        .checkout-thank-you {
+
+            .heading {
+                font-size: 38px;
+                letter-spacing: 1.15px;
+                line-height: 46px;
+            }
+
+            .product-card {
+                display: flex;
+                border-radius: 8px 0 0 8px;
+
+                .product-details {
+                    width: 60%;
+                }
+
+                .total {
+                    width: 40%;
+                    border-radius: 0 8px 8px 0;
+                }
+            }
+
+            .button-container {
+                margin: 40px auto 0 auto;
+            }
+
+        }
+    }
+}

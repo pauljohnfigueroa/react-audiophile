@@ -1,0 +1,220 @@
+.cart {
+    position: fixed;
+    top: 110px;
+    left: 10%;
+    width: 80%;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    z-index: 999;
+
+    .heading-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        .heading {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+        }
+
+        .cart-total {
+            width: 80%;
+        }
+
+        a {
+            color: rgba(0, 0, 0, .5);
+            font-size: 15px;
+
+            &:hover {
+                color: #d87d4a
+            }
+        }
+
+    }
+
+    .price-details {
+
+        .price-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            margin: 10px auto;
+        }
+
+        .label {
+            width: 50%;
+            font-size: 15px;
+            color: rgba(0, 0, 0, .5);
+            text-transform: uppercase;
+        }
+
+        .price {
+            width: 50%;
+            text-align: right;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .price-row:last-child {
+            margin-top: 20px;
+
+            .price {
+                color: #d87d4a;
+            }
+        }
+    }
+
+    .button-container {
+        width: 100%;
+    }
+
+}
+
+.item-row {
+    display: flex;
+    width: 100%;
+
+    .item-image-container {
+        background-color: #cfcfcf;
+        border-radius: 8px;
+        min-width: 64px;
+        width: 64px;
+        min-height: 64px;
+        height: 64px;
+
+        img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+        }
+    }
+
+    .item-details {
+        display: flex;
+        width: 100%;
+
+        .item-title-price {
+            display: flex;
+            flex-direction: column;
+            //justify-content: space-between;
+            width: 80%;
+        }
+
+        .item-title,
+        .item-price {
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 18px;
+            margin: 3px 10px;
+        }
+
+        .item-title {
+            color: black;
+        }
+
+        .item-price,
+        .item-count {
+            color: rgba(0, 0, 0, .5);
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 25px;
+            text-align: right;
+            width: 20%;
+
+        }
+
+    }
+
+}
+
+.cart-quantity {
+    margin: 20px auto;
+    display: flex;
+    width: 4rem;
+    min-height: 32px;
+    max-height: 32px;
+
+    .quantity-nav {
+        background-color: #f1f1f1;
+        width: 40px;
+
+        .quantity-button {
+            font-size: 18px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, .5);
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover {
+                color: #D87D4A;
+                cursor: pointer;
+            }
+        }
+    }
+
+    input {
+        background-color: #f1f1f1;
+        font-size: 13px;
+        font-weight: 700;
+        width: 40%;
+        text-align: center;
+        border: none;
+    }
+
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield;
+    }
+
+}
+
+// + / - buttons
+
+// Cart Remove all button
+.cart-remove-all-btn {
+    background-color: transparent;
+    color: #D87D4A;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    width: auto;
+    min-height: 30px;
+
+    &:hover {
+        color: #9b3900;
+        border: none;
+    }
+}
+
+.cart-checkout-btn {
+    width: 100%;
+}
+
+.cart-icon-container {
+
+    &:hover {
+
+        .item-count {
+            color: #d87d4a;
+        }
+
+        svg {
+            path {
+                fill: #d87d4a;
+            }
+        }
+    }
+}

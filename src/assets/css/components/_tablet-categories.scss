@@ -1,0 +1,28 @@
+/* Categories - Tablet */
+@media screen and (min-width: 578px) and (max-width: 1017px) {
+
+    .product-section {
+        .product-card {
+            .product-card-header {
+
+                img {
+                    width: 45%;
+                    height: auto;
+                }
+            }
+
+            .product-card-description {
+                width: 80%;
+
+                .heading {
+                    font-size: 40px;
+                    letter-spacing: 1.5px;
+                    line-height: 44px;
+                    width: 60%;
+                }
+            }
+
+        }
+
+    }
+}

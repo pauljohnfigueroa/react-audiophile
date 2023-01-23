@@ -1,0 +1,133 @@
+// General
+.heading {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.sub-heading {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+// Links
+a,
+a:visited {
+    color: white;
+    cursor: pointer;
+}
+
+a:hover {
+    color: #d87d4a;
+}
+
+// Button
+.buttons-outer-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+button {
+    background-color: #d87d4a;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    color: white;
+    width: 100%;
+    min-height: 48px;
+
+    &:hover {
+        background-color: transparent;
+        border: 1px solid #d87d4a;
+        color: #d87d4a;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        color: #626262;
+        background-color: #c7c7c7;
+        border: 1px solid #c7c7c7;
+    }
+}
+
+.google {
+    background-color: #006eff;
+
+    &:hover {
+        background-color: #00459e;
+        border: 1px solid #00459e;
+        color: #ffffff;
+    }
+}
+
+.inverted {
+    background-color: transparent;
+    color: #d87d4a;
+    border: 1px solid #d87d4a;
+
+    &:hover {
+        background-color: #d87d4a;
+        color: #ffffff;
+    }
+}
+
+// remove a cart or checkout item
+.x-button {
+    margin: auto;
+    padding: 0 10px;
+
+    &:hover {
+        cursor: pointer;
+        color: #d87d4a;
+    }
+}
+
+
+// Forms
+.form-row {
+    margin: 20px 0 10px 0;
+}
+
+.form-label {
+    width: 100%;
+}
+
+.form-input {
+    width: 100%;
+    height: 2rem;
+}
+
+
+// Alignments
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.mt-1rem {
+    margin-top: 1rem;
+}
+
+.mt-2rem {
+    margin-top: 2rem;
+}
+
+.mb-1rem {
+    margin-bottom: 1rem;
+}
+
+.p-1rem {
+    padding: 1rem;
+}
+
+// Dimension
+.width-50pct {
+    width: 50%;
+}
