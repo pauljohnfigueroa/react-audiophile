@@ -15,8 +15,8 @@ export const selectCategoriesMap = createSelector(
         const { category, items } = categ;
         acc[category.toLowerCase()] = items;
         return acc;
-    }, {})
-);
+    }, [])
+)
 
 // export const setCategories = state => state.categories.categories
 //     .reduce((acc, categ) => {
