@@ -11,7 +11,7 @@ export const selectCategories = createSelector(
 // Memoized, this will run whenever categories change
 export const selectCategoriesMap = createSelector(
     [selectCategories],
-    (categoriesSlice) => categoriesSlice.reduce((acc, categ) => {
+    (categoriesSlice) => categoriesSlice.categories.reduce((acc, categ) => {
         const { category, items } = categ;
         acc[category.toLowerCase()] = items;
         return acc;
