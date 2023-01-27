@@ -4,8 +4,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import { BrowserRouter } from 'react-router-dom';
 
+import { Elements } from '@stripe/react-stripe-js'
+
 import { Provider } from 'react-redux';
 import { store, persitor } from './store/store';
+
+
 
 import './index.css';
 import App from './App';
@@ -18,7 +22,9 @@ root.render(
     <Provider store={store}>
       <PersistGate persistor={persitor}>
         <BrowserRouter>
-          <App />
+          <Elements>
+            <App />
+          </Elements>
         </BrowserRouter>
       </PersistGate>
     </Provider>
