@@ -40,5 +40,7 @@ export const store = configureStore({
     enhancers: [composedEnhancers],
 });
 
+console.log('store', store.getState())
+
 export const persitor = persistStore(store);
 

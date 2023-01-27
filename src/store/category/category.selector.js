@@ -1,26 +1,33 @@
 import { createSelector } from "reselect";
 
-const selectCategoryReducer = state => state.categories;
+const selectCategoryReducer = (state) => state['categories'];
+console.log('typeof selectCategoryReducer', typeof selectCategoryReducer)
 
 // Memoized
 export const selectCategories = createSelector(
     [selectCategoryReducer],
-    (categoriesSlice) => categoriesSlice.categories
+    (categoriesSlice) => {
+        console.log('typeof categoriesSlice', typeof categoriesSlice)
+        console.log('categoriesSlice', categoriesSlice)
+
+        return categoriesSlice.categories
+    }
 );
 
 // Memoized, this will run whenever categories change
 export const selectCategoriesMap = createSelector(
     [selectCategories],
-    (categoriesSlice) => categoriesSlice.reduce((acc, categ) => {
-        const { category, items } = categ;
-        acc[category.toLowerCase()] = items;
-        return acc;
-    }, [])
-)
+    (categories) => {
+        console.log('categories', categories)
 
-// export const setCategories = state => state.categories.categories
-//     .reduce((acc, categ) => {
-//         const { category, items } = categ;
-//         acc[category.toLowerCase()] = items;
-//         return acc;
-//     }, {});
+        if (Array.isArray(categories)) {
+            return categories.reduce((acc, categ) => {
+                const { category, items } = categ;
+                acc[category.toLowerCase()] = items;
+                return acc;
+            }, {})
+        } else {
+            throw new Error('Ooops. categories is not an array.');
+        }
+    }
+);
