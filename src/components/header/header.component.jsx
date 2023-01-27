@@ -5,8 +5,6 @@ import { useSelector } from 'react-redux';
 
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
-import SignInIcon from '../../assets/images/signin-icon-white.png';
-import SignOutIcon from '../../assets/images/signout-icon-white.png';
 
 // import { CartContext } from '../../contexts/cart.context';
 // import { UserContext } from '../../contexts/user.context';
@@ -51,10 +49,10 @@ const Header = () => {
                         {
                             currentUser ?
                                 <Link onClick={signOutUser} >
-                                    <img src={SignInIcon} alt="fireSpot" width="24" height="24" />
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 6a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v2a1 1 0 1 1-2 0V6H4v12h9v-2a1 1 0 1 1 2 0v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6zm15.293 2.293a1 1 0 0 1 1.414 0l3 3a1 1 0 0 1 0 1.414l-3 3a1 1 0 0 1-1.414-1.414L18.586 13H9a1 1 0 1 1 0-2h9.586l-1.293-1.293a1 1 0 0 1 0-1.414z" fill="#FFF" fill-rule="nonzero" /></svg>
                                 </Link> :
                                 <Link to="/authenticate">
-                                    <img src={SignOutIcon} alt="fireSpot" width="24" height="24" />
+                                    <svg fill="#ffffff" width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m13 16 5-4-5-4v3H4v2h9z" /><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z" /></svg>
                                 </Link>
                         }
                     </div>

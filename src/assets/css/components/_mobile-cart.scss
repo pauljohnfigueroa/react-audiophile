@@ -27,10 +27,6 @@
         a {
             color: rgba(0, 0, 0, .5);
             font-size: 15px;
-
-            &:hover {
-                color: #d87d4a
-            }
         }
 
     }
@@ -205,16 +201,11 @@
 
 .cart-icon-container {
 
-    &:hover {
-
-        .item-count {
-            color: #d87d4a;
-        }
-
-        svg {
+        svg:hover {
+            cursor: pointer;
             path {
                 fill: #d87d4a;
             }
         }
-    }
+    
 }

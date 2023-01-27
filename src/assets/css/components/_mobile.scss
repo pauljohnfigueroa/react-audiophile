@@ -34,7 +34,8 @@ header {
         }
 
         .cart-icon-container {
-            width: 10%;
+            width: auto;
+            height: auto;
             text-align: right;
             position: relative;
 
@@ -44,14 +45,23 @@ header {
                 position: absolute;
                 font-size: .6rem;
                 top: -12px;
-                right: 0;
+                right: 50%;
             }
+
         }
 
         .login-icon {
             margin-left: 20px;
             height: 24px;
             width: 24px;
+
+            svg:hover {
+                cursor: pointer;
+                path {
+                    fill: #d87d4a;
+                }
+            }
+        
         }
     }
 }
