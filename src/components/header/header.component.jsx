@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 
 import { ReactComponent as AudiophileLogo } from '../../assets/images/logo.svg';
 import { ReactComponent as MobileNavIcon } from '../../assets/images/icon-hamburger.svg';
+import SignInIcon from '../../assets/images/signin-icon-white.png';
+import SignOutIcon from '../../assets/images/signout-icon-white.png';
 
 // import { CartContext } from '../../contexts/cart.context';
 // import { UserContext } from '../../contexts/user.context';
@@ -45,11 +47,15 @@ const Header = () => {
                     </div>
                     <MainNavigation />
                     <CartIcon />
-                    <div>
+                    <div className='login-icon'>
                         {
                             currentUser ?
-                                <Link onClick={signOutUser} >Sign Out</Link> :
-                                <Link to="/authenticate">Sign In</Link>
+                                <Link onClick={signOutUser} >
+                                    <img src={SignInIcon} alt="fireSpot" width="24" height="24" />
+                                </Link> :
+                                <Link to="/authenticate">
+                                    <img src={SignOutIcon} alt="fireSpot" width="24" height="24" />
+                                </Link>
                         }
                     </div>
                 </div>
