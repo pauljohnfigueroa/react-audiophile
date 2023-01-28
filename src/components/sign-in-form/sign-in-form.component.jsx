@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { getRedirectResult } from "firebase/auth";
 
 import {
@@ -11,6 +11,9 @@ import {
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
+
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
 const defaultFormValues = {
     email: '',
@@ -79,9 +82,71 @@ const SignInForm = () => {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
-                <div className="form-row">
+        <Fragment>
+            < Formik
+                initialValues={{
+                    email: ''
+                }}
+
+                validationSchema={Yup.object({
+                    email: Yup.string().email('Please give a valid email address.').required('Required'),
+                })}
+
+                onSubmit={values => {
+                    // Handle submitted values here
+                    //alert(JSON.stringify(values, null, 2));
+                    //event.preventDefault();
+                    try {
+                        // const response = await signInAuthUserWithEmailAndPassword(email, password);
+                        // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+                        signInAuthUserWithEmailAndPassword(values.email, values.password);
+                        // setCurrentUser(user); // removed for onAuthStateChanged()
+
+                        //console.log(response);
+                        resetFormValues();
+                    } catch (error) {
+                        alert('Something went wrong, can not sign in the user.', error.message)
+                    }
+                }}
+            >
+
+                {formik => (
+                    <section className="checkout-form">
+                        <Form >
+                            <div className="text-input">
+                                <label htmlFor="name">Email</label>
+                                <Field name="email" type="text" />
+                                <ErrorMessage name="email" />
+                            </div>
+
+                            <div className="text-input">
+                                <label htmlFor="name">Password</label>
+                                <Field name="password" type="password" />
+                                <ErrorMessage name="password" />
+                            </div>
+
+                            <div className="buttons-outer-container">
+                                <div className="button-container">
+                                    <Button type="submit" buttonType="inverted" >Sign In</Button>
+                                </div>
+                                <div type='button' className="button-container">
+                                    <Button onClick={logGoogleUser} buttonType="google" >Sign In with Google</Button>
+                                </div>
+                                <div type='button' className="button-container">
+                                    <Button onClick={signInWithGoogleRedirect} buttonType="google" >Sign In with Google Redirect</Button>
+                                </div>
+                            </div>
+
+                            {/* <div className="button-container">
+                                    <Button type="submit" label="Continue & Pay" />
+                                </div> */}
+                        </Form>
+                    </section>
+                )}
+            </Formik >
+
+            {/* <form onSubmit={handleSubmit}>
+                <div className="text-input">
                     <FormInput
                         label="Email"
                         type="email"
@@ -91,8 +156,11 @@ const SignInForm = () => {
                         name="email"
                         value={email}
                     />
+
+                    <label htmlFor="name">Email</label>
+
                 </div>
-                <div className="form-row">
+                <div className="text-input">
                     <FormInput
                         label="Password"
                         type="password"
@@ -105,18 +173,18 @@ const SignInForm = () => {
                 </div>
                 <div className="buttons-outer-container">
                     <div className="button-container">
-                        <Button type="submit" buttonType="inverted" label="Sign In" />
+                        <Button type="submit" buttonType="inverted" >Sign In</Button>
                     </div>
                     <div type='button' className="button-container">
-                        <Button onClick={logGoogleUser} buttonType="google" label="Sign In with Google" />
+                        <Button onClick={logGoogleUser} buttonType="google" >Sign In with Google</Button>
                     </div>
                     <div type='button' className="button-container">
-                        <Button onClick={signInWithGoogleRedirect} buttonType="google" label="Sign In with Google Redirect" />
+                        <Button onClick={signInWithGoogleRedirect} buttonType="google" >Sign In with Google Redirect</Button>
                     </div>
                 </div>
-            </form>
+            </form> */}
 
-        </>
+        </Fragment>
     );
 }
 export default SignInForm;

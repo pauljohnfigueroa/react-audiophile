@@ -72,7 +72,6 @@ export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => 
   })
 
   await batch.commit()
-  console.log('done')
 }
 
 // Get the products/categories data from firestore.
@@ -145,6 +144,8 @@ export const createAuthUserFromEmailAndPassword = async (email, password) => {
 
 export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return
+
+  console.log(auth)
   return await signInWithEmailAndPassword(auth, email, password)
 }
 
