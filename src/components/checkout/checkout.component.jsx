@@ -137,9 +137,9 @@ const CheckOut = () => {
                                     </div>
                                 </fieldset>
 
-                                <div className="button-container">
+                                {/* <div className="button-container">
                                     <Button type="submit" label="Continue & Pay" />
-                                </div>
+                                </div> */}
                             </Form>
                         </section>
                     )}
@@ -170,9 +170,9 @@ const CheckOut = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="button-container">
-                        <Button type="button" label="Continue & Pay" />
-                    </div>
+                    {/* <div className="button-container">
+                        <Button type="button">Continue & Pay</Button>
+                    </div> */}
 
                     <PaymentForm />
 

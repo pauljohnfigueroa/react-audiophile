@@ -1,18 +1,22 @@
+import Spinner from "../spinner/spinner.component";
 
 export const BUTTON_TYPE_CLASSES = {
     google: 'google',
     inverted: 'inverted',
 };
 
-const Button = ({ label, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
 
     return (
-        <>
-            <button
-                className={`button ${BUTTON_TYPE_CLASSES[buttonType]}`}
-                {...otherProps}
-            >{label}</button>
-        </>
+
+        <button
+            disabled={isLoading}
+            className={`button ${BUTTON_TYPE_CLASSES[buttonType]}`}
+            {...otherProps}
+        >
+            {isLoading ? <Spinner /> : children}
+        </button>
+
     );
 }
 export default Button;

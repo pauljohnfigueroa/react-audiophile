@@ -58,11 +58,10 @@ const CartDropDown = () => {
                     {cartItemsArray.length && (
                         <div className="text-align-right">
                             <Button
-                                label="Remove All"
                                 className="cart-remove-all-btn"
                                 onClick={removeAllFromCartHandler}
                             >
-                                I am a child of button
+                                Remove All
                             </Button>
                         </div>
                     )}
@@ -76,9 +75,11 @@ const CartDropDown = () => {
                                 type="button"
                                 className="cart-checkout-btn"
                                 onClick={goToCheckOutHandler}
-                            />
+                            >
+                                Checkout
+                            </Button>
                         ) : (
-                            <Button label="Checkout" disabled={true} />
+                            <Button disabled={true} >Checkout</Button>
                         )}
                     </div>
                 </aside>
