@@ -25,6 +25,7 @@ import './assets/css/product.scss'
 import './assets/css/cart.scss'
 import './assets/css/sign-in-form.scss'
 import './assets/css/checkout.scss'
+import './assets/css/forms.scss'
 
 const App = () => {
   const dispatch = useDispatch()

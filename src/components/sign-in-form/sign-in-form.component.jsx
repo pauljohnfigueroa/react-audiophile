@@ -62,20 +62,20 @@ const SignInForm = () => {
         console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
     }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            // const response = await signInAuthUserWithEmailAndPassword(email, password);
-            // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            await signInAuthUserWithEmailAndPassword(email, password);
-            // setCurrentUser(user); // removed for onAuthStateChanged()
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
+    //     try {
+    //         // const response = await signInAuthUserWithEmailAndPassword(email, password);
+    //         // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+    //         await signInAuthUserWithEmailAndPassword(email, password);
+    //         // setCurrentUser(user); // removed for onAuthStateChanged()
 
-            //console.log(response);
-            resetFormValues();
-        } catch (error) {
-            alert('Something went wrong, can not sign in the user.', error.message)
-        }
-    }
+    //         //console.log(response);
+    //         resetFormValues();
+    //     } catch (error) {
+    //         alert('Something went wrong, can not sign in the user.', error.message)
+    //     }
+    // }
 
     const resetFormValues = () => {
         setFormvalues(defaultFormValues);
@@ -111,12 +111,14 @@ const SignInForm = () => {
             >
 
                 {formik => (
-                    <section className="checkout-form">
-                        <Form >
+                    <section>
+                        <Form>
                             <div className="text-input">
                                 <label htmlFor="name">Email</label>
                                 <Field name="email" type="text" />
-                                <ErrorMessage name="email" />
+                                <div className="form-error">
+                                    <ErrorMessage name="email" />
+                                </div>
                             </div>
 
                             <div className="text-input">
@@ -126,17 +128,16 @@ const SignInForm = () => {
                             </div>
 
                             <div className="buttons-outer-container">
-                                <div className="button-container">
-                                    <Button type="submit" buttonType="inverted" >Sign In</Button>
+                                <div>
+                                    <Button type="submit" buttonType="inverted" >Sign In with Email</Button>
                                 </div>
-                                <div type='button' className="button-container">
+                                <div type='button'>
                                     <Button onClick={logGoogleUser} buttonType="google" >Sign In with Google</Button>
                                 </div>
-                                <div type='button' className="button-container">
+                                <div type='button'>
                                     <Button onClick={signInWithGoogleRedirect} buttonType="google" >Sign In with Google Redirect</Button>
                                 </div>
                             </div>
-
                             {/* <div className="button-container">
                                     <Button type="submit" label="Continue & Pay" />
                                 </div> */}

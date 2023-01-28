@@ -1,0 +1,29 @@
+.text-input {
+    display: flex;
+    flex-direction: column; // label and input vertical
+    position: relative;
+
+    label {
+        font-size: 12px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    input {
+        border: 1px solid #cfcfcf;
+        border-radius: 8px;
+        height: 56px;
+        font-size: 14px;
+        padding: 5px 25px;
+        margin-bottom: 25px;
+    }
+}
+
+.form-error {
+    
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

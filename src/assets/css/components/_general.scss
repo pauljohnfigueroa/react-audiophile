@@ -24,9 +24,10 @@ a:hover {
 // Button
 .buttons-outer-container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    width: 100%;
 }
-
 
 button {
     background-color: #d87d4a;
@@ -39,6 +40,7 @@ button {
     color: white;
     width: 100%;
     min-height: 48px;
+    margin: 10px 0;
 
     &:hover {
         background-color: transparent;
@@ -53,6 +55,12 @@ button {
         border: 1px solid #c7c7c7;
     }
 }
+
+.buttons-outer-container > div :first-child {
+    margin-top: 0;
+}
+
+
 
 .google {
     background-color: #006eff;
