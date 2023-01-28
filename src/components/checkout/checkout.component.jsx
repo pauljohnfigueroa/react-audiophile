@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import { selectCartItems, selectCartTotalAmount } from '../../store/cart/cart.selector'
 import Button from '../button/button.component'
 import CartItem from '../cart/cart-item/cart-item.component'
+import PaymentForm from '../payment-form/payment-form.component'
 
 const CheckOut = () => {
 
@@ -172,8 +173,14 @@ const CheckOut = () => {
                     <div className="button-container">
                         <Button type="button" label="Continue & Pay" />
                     </div>
+
+                    <PaymentForm />
+
                 </section>
             </section>
+
+
+
         </Fragment >
     )
 }
