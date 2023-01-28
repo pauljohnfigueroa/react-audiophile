@@ -14,6 +14,7 @@ const PaymentForm = () => {
 
     const amount = useSelector(selectCartTotalAmount)
     const currentUser = useSelector(selectCurrentUser)
+    const grandTotalAmount = (amount * 1.12 + amount * 0.05).toFixed(2).toLocaleString('en')
 
     const [isProcessingPayment, setIsProcessingPayment] = useState(false)
 
@@ -32,7 +33,7 @@ const PaymentForm = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ amount: amount * 100 })
+            body: JSON.stringify({ amount: grandTotalAmount * 100 })
         }).then(res => res.json())
 
         // console.log(response)
