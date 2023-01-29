@@ -55,26 +55,11 @@ const SignInForm = () => {
         resetFormValues();
     }
 
-    const handleChange = (event) => {
-        //e.preventDefault();
-        const { name, value } = event.target;
-        setFormvalues({ ...formValues, [name]: value });
-        console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
-    }
-
-    // const handleSubmit = async (event) => {
-    //     event.preventDefault();
-    //     try {
-    //         // const response = await signInAuthUserWithEmailAndPassword(email, password);
-    //         // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-    //         await signInAuthUserWithEmailAndPassword(email, password);
-    //         // setCurrentUser(user); // removed for onAuthStateChanged()
-
-    //         //console.log(response);
-    //         resetFormValues();
-    //     } catch (error) {
-    //         alert('Something went wrong, can not sign in the user.', error.message)
-    //     }
+    // const handleChange = (event) => {
+    //     //e.preventDefault();
+    //     const { name, value } = event.target;
+    //     setFormvalues({ ...formValues, [name]: value });
+    //     console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
     // }
 
     const resetFormValues = () => {
@@ -85,25 +70,19 @@ const SignInForm = () => {
         <Fragment>
             < Formik
                 initialValues={{
-                    email: ''
+                    email: '',
+                    password: ''
                 }}
 
                 validationSchema={Yup.object({
                     email: Yup.string().email('Please give a valid email address.').required('Required'),
                 })}
 
-                onSubmit={values => {
-                    // Handle submitted values here
-                    //alert(JSON.stringify(values, null, 2));
-                    //event.preventDefault();
+                onSubmit={async (values, { resetForm }) => {
                     try {
-                        // const response = await signInAuthUserWithEmailAndPassword(email, password);
-                        // const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-                        signInAuthUserWithEmailAndPassword(values.email, values.password);
-                        // setCurrentUser(user); // removed for onAuthStateChanged()
-
-                        //console.log(response);
-                        resetFormValues();
+                        await signInAuthUserWithEmailAndPassword(values.email, values.password);
+                        // resetFormValues();
+                        resetForm({});
                     } catch (error) {
                         alert('Something went wrong, can not sign in the user.', error.message)
                     }
@@ -115,16 +94,18 @@ const SignInForm = () => {
                         <Form>
                             <div className="text-input">
                                 <label htmlFor="name">Email</label>
-                                <Field name="email" type="text" />
+                                <Field name="email" type="email" />
                                 <div className="form-error">
                                     <ErrorMessage name="email" />
                                 </div>
                             </div>
 
                             <div className="text-input">
-                                <label htmlFor="name">Password</label>
+                                <label htmlFor="password">Password</label>
                                 <Field name="password" type="password" />
-                                <ErrorMessage name="password" />
+                                <div className="form-error">
+                                    <ErrorMessage name="password" />
+                                </div>
                             </div>
 
                             <div className="buttons-outer-container">
@@ -138,53 +119,10 @@ const SignInForm = () => {
                                     <Button onClick={signInWithGoogleRedirect} buttonType="google" >Sign In with Google Redirect</Button>
                                 </div>
                             </div>
-                            {/* <div className="button-container">
-                                    <Button type="submit" label="Continue & Pay" />
-                                </div> */}
                         </Form>
                     </section>
                 )}
             </Formik >
-
-            {/* <form onSubmit={handleSubmit}>
-                <div className="text-input">
-                    <FormInput
-                        label="Email"
-                        type="email"
-                        className="form-input"
-                        onChange={handleChange}
-                        required
-                        name="email"
-                        value={email}
-                    />
-
-                    <label htmlFor="name">Email</label>
-
-                </div>
-                <div className="text-input">
-                    <FormInput
-                        label="Password"
-                        type="password"
-                        className="form-input"
-                        onChange={handleChange}
-                        required
-                        name="password"
-                        value={password}
-                    />
-                </div>
-                <div className="buttons-outer-container">
-                    <div className="button-container">
-                        <Button type="submit" buttonType="inverted" >Sign In</Button>
-                    </div>
-                    <div type='button' className="button-container">
-                        <Button onClick={logGoogleUser} buttonType="google" >Sign In with Google</Button>
-                    </div>
-                    <div type='button' className="button-container">
-                        <Button onClick={signInWithGoogleRedirect} buttonType="google" >Sign In with Google Redirect</Button>
-                    </div>
-                </div>
-            </form> */}
-
         </Fragment>
     );
 }

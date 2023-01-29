@@ -5,7 +5,8 @@ import { createAuthUserFromEmailAndPassword, createUserDocumentFromAuth } from "
 import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
-// import { UserContext } from "../../contexts/user.context";
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import * as Yup from 'yup'
 
 const defaultFormFields = {
     displayName: '',
@@ -36,7 +37,6 @@ const SignUpForm = () => {
             await createUserDocumentFromAuth(user, { displayName });
 
             // setCurrentUser(user); // removed for onAuthStateChanged()
-
             resetFormFields();
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
@@ -47,15 +47,89 @@ const SignUpForm = () => {
         }
     }
 
-    const handleChange = (event) => {
-        // name and event are passed from form input through the event.target
-        const { name, value } = event.target;
-        setFormFields({ ...formFields, [name]: value });
-    }
+    // const handleChange = (event) => {
+    //     // name and event are passed from form input through the event.target
+    //     const { name, value } = event.target;
+    //     setFormFields({ ...formFields, [name]: value });
+    // }
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            < Formik
+                initialValues={{
+                    displayName: '',
+                    email: '',
+                    password: '',
+                    confirmPassword: '',
+                }}
+
+                validationSchema={Yup.object({
+                    displayName: Yup.string('Please give a valid email address.').required('Required'),
+                    email: Yup.string().email('Please give a valid email address.').required('Required'),
+                    password: Yup.string('Password length must be at least 8 characters.').required('Required'),
+                    confirmPassword: Yup.string('Must be the same as password.').required('Required'),
+                })}
+
+                onSubmit={async (values, { resetForm }) => {
+                    try {
+                        const { user } = await createAuthUserFromEmailAndPassword(values.email, values.password);
+                        await createUserDocumentFromAuth(user, { displayName });
+                        // resetFormFields();
+                        resetForm({})
+                    } catch (error) {
+                        if (error.code === 'auth/email-already-in-use') {
+                            alert('Cannot create user, email already in use.');
+                        } else {
+                            console.log('User creation encountered an error.', error);
+                        }
+                    }
+                }}
+            >
+                {formik => (
+                    <section>
+                        <Form>
+                            <div className="text-input">
+                                <label htmlFor="displayName">Display Name</label>
+                                <Field name="displayName" type="text" />
+                                <div className="form-error">
+                                    <ErrorMessage name="displayName" />
+                                </div>
+                            </div>
+
+                            <div className="text-input">
+                                <label htmlFor="email">Email</label>
+                                <Field name="email" type="email" />
+                                <div className="form-error">
+                                    <ErrorMessage name="email" />
+                                </div>
+                            </div>
+
+                            <div className="text-input">
+                                <label htmlFor="password">Password</label>
+                                <Field name="password" type="password" />
+                                <div className="form-error">
+                                    <ErrorMessage name="password" />
+                                </div>
+                            </div>
+
+                            <div className="text-input">
+                                <label htmlFor="confirmPassword">Confirm Password</label>
+                                <Field name="confirmPassword" type="password" />
+                                <div className="form-error">
+                                    <ErrorMessage name="confirmPassword" />
+                                </div>
+                            </div>
+                            <div className="buttons-outer-container">
+                                <div>
+                                    <Button type="submit" buttonType="inverted" >Sign Up</Button>
+                                </div>
+
+                            </div>
+                        </Form>
+                    </section>
+                )}
+            </Formik>
+            {/* <form onSubmit={handleSubmit}>
                 <div className="form-row">
                     <FormInput
                         label="Display Name"
@@ -108,7 +182,7 @@ const SignUpForm = () => {
                     <Button type='submit' >Sign Up</Button>
                 </div>
 
-            </form>
+            </form> */}
 
         </>
     );
