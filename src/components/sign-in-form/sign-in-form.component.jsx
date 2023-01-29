@@ -1,4 +1,4 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, Fragment } from "react";
 import { getRedirectResult } from "firebase/auth";
 
 import {
@@ -8,22 +8,22 @@ import {
     createUserDocumentFromAuth
 } from "../../utils/firebase/firebase.utils";
 
-import FormInput from "../form-input/form-input.component";
+// import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-const defaultFormValues = {
-    email: '',
-    password: '',
-};
+// const defaultFormValues = {
+//     email: '',
+//     password: '',
+// };
 
 const SignInForm = () => {
 
-    const [formValues, setFormvalues] = useState(defaultFormValues);
-    const { email, password } = formValues;
+    // const [formValues, setFormvalues] = useState(defaultFormValues);
+    // const { email, password } = formValues;
     // const { setCurrentUser } = useContext(UserContext);
 
     useEffect(() => {
@@ -52,7 +52,7 @@ const SignInForm = () => {
         const { user } = await signInWithGooglePopUp();
         // const useDocRef = await createUserDocumentFromAuth(user);
         await createUserDocumentFromAuth(user);
-        resetFormValues();
+        // resetFormValues();
     }
 
     // const handleChange = (event) => {
@@ -62,9 +62,9 @@ const SignInForm = () => {
     //     console.log({ ...formValues, [name]: value }); // ...formValues are the previous values, 
     // }
 
-    const resetFormValues = () => {
-        setFormvalues(defaultFormValues);
-    }
+    // const resetFormValues = () => {
+    //     setFormvalues(defaultFormValues);
+    // }
 
     return (
         <Fragment>

@@ -1,51 +1,51 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 import { createAuthUserFromEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils";
 
-import FormInput from "../form-input/form-input.component";
+// import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
-const defaultFormFields = {
-    displayName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-}
+// const defaultFormFields = {
+//     displayName: '',
+//     email: '',
+//     password: '',
+//     confirmPassword: '',
+// }
 
 const SignUpForm = () => {
-    const [formFields, setFormFields] = useState(defaultFormFields);
-    const { displayName, email, password, confirmPassword } = formFields;
+    // const [formFields, setFormFields] = useState(defaultFormFields);
+    // const { displayName, email, password, confirmPassword } = formFields;
     // const { setCurrentUser } = useContext(UserContext);
 
-    const resetFormFields = () => {
-        setFormFields(defaultFormFields);
-    }
+    // const resetFormFields = () => {
+    //     setFormFields(defaultFormFields);
+    // }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+    // const handleSubmit = async (event) => {
+    //     event.preventDefault();
 
-        if (password !== confirmPassword) {
-            alert('Passwords do not match.');
-            return;
-        }
+    //     if (password !== confirmPassword) {
+    //         alert('Passwords do not match.');
+    //         return;
+    //     }
 
-        try {
-            const { user } = await createAuthUserFromEmailAndPassword(email, password);
-            await createUserDocumentFromAuth(user, { displayName });
+    //     try {
+    //         const { user } = await createAuthUserFromEmailAndPassword(email, password);
+    //         await createUserDocumentFromAuth(user, { displayName });
 
-            // setCurrentUser(user); // removed for onAuthStateChanged()
-            resetFormFields();
-        } catch (error) {
-            if (error.code === 'auth/email-already-in-use') {
-                alert('Cannot create user, email already in use.');
-            } else {
-                console.log('User creation encountered an error.', error);
-            }
-        }
-    }
+    //         // setCurrentUser(user); // removed for onAuthStateChanged()
+    //         resetFormFields();
+    //     } catch (error) {
+    //         if (error.code === 'auth/email-already-in-use') {
+    //             alert('Cannot create user, email already in use.');
+    //         } else {
+    //             console.log('User creation encountered an error.', error);
+    //         }
+    //     }
+    // }
 
     // const handleChange = (event) => {
     //     // name and event are passed from form input through the event.target
@@ -73,7 +73,7 @@ const SignUpForm = () => {
                 onSubmit={async (values, { resetForm }) => {
                     try {
                         const { user } = await createAuthUserFromEmailAndPassword(values.email, values.password);
-                        await createUserDocumentFromAuth(user, { displayName });
+                        await createUserDocumentFromAuth(user, { displayName: user.displayName });
                         // resetFormFields();
                         resetForm({})
                     } catch (error) {
